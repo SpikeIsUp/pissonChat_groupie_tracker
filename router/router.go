@@ -3,20 +3,20 @@ package router
 import (
 	"net/http"
 
-	"github.com/SpikeIsUp/igApi/controller"
+	"pissonChat_groupie_tracker/controller"
 )
 
-func Router() *http.ServeMux {
+func SetupRouter() *http.ServeMux {
 	mux := http.NewServeMux()
 
-	// routes
-	mux.HandleFunc("/aPropos", controller.APropos)
-	mux.HandleFunc("/categories", controller.Categories)
-	mux.HandleFunc("/collection", controller.Collection)
-	mux.HandleFunc("/favoris", controller.Favoris)
+	mux.Handle("/assets/", http.StripPrefix("/assets/", http.FileServer(http.Dir("assets"))))
+
 	mux.HandleFunc("/", controller.Home)
-	mux.HandleFunc("/recherche", controller.Recherche)
-	mux.HandleFunc("/ressources", controller.Ressources)
+	mux.HandleFunc("/search", controller.Search)
+	mux.HandleFunc("/favorites", controller.Favorites)
+	mux.HandleFunc("/favorite/add", controller.AddFavorite)
+	mux.HandleFunc("/favorite/remove", controller.RemoveFavorite)
+	mux.HandleFunc("/about", controller.About)
 
 	return mux
 }

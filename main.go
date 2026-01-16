@@ -1,23 +1,18 @@
 package main
 
-import(
-	"net/http"
+import (
 	"log"
+	"net/http"
 
-	"github.com/SpikeIsUp/igApi/router"
+	"pissonChat_groupie_tracker/internal/storage"
+	"pissonChat_groupie_tracker/router"
 )
 
 func main() {
+	storage.InitDB()
 
-	// r devient router
-	r := router.Router()
+	r := router.SetupRouter()
 
-// fichiers statiques
-	fs := http.FileServer(http.Dir("asset"))
-	http.Handle("/asset/", http.StripPrefix("/asset/", fs))
-
-	http.Handle("/", r)
-
-	log.Println("Serveur lancé--> http://localhost:8080")
-	log.Fatal(http.ListenAndServe(":8080", nil))
+	log.Println("Server running on http://localhost:8080")
+	log.Fatal(http.ListenAndServe(":8080", r))
 }

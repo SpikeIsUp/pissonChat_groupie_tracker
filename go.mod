@@ -1,3 +1,3 @@
-module github.com/SpikeIsUp/igApi
+module github.com/SpikeIsUp/pissonChat_groupie_tracker
 
-go 1.25.1
+go 1.21
