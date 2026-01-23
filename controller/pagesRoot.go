@@ -78,23 +78,6 @@ func AddFavorite(w http.ResponseWriter, r *http.Request) {
 	http.Redirect(w, r, "/favorites", http.StatusSeeOther)
 }
 
-func RemoveFavorite(w http.ResponseWriter, r *http.Request) {
-	if r.Method != http.MethodPost {
-		http.Redirect(w, r, "/favorites", http.StatusSeeOther)
-		return
-	}
-
-	r.ParseForm()
-	id := r.FormValue("id")
-
-	if err := storage.RemoveFavorite(id); err != nil {
-		http.Error(w, "Impossible de supprimer le favori", http.StatusInternalServerError)
-		return
-	}
-
-	log.Printf("Favori supprimé : %s", id)
-	http.Redirect(w, r, "/favorites", http.StatusSeeOther)
-}
 
 func About(w http.ResponseWriter, r *http.Request) {
 	tmpl := template.Must(template.ParseFiles("template/aPropos.html"))

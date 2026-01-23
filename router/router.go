@@ -21,9 +21,6 @@ func SetupRouter() *http.ServeMux {
 	// Ajouter un favori
 	mux.HandleFunc("/favorite/add", controller.AddFavorite)
 
-	// Supprimer un favori
-	mux.HandleFunc("/favorites/remove", controller.RemoveFavorite)
-
 	// À propos
 	mux.HandleFunc("/about", controller.About)
 
