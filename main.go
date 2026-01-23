@@ -11,8 +11,8 @@ import (
 func main() {
 	storage.InitDB()
 
-	r := router.SetupRouter()
+	mux := router.SetupRouter()
 
-	log.Println("Server running on http://localhost:8080")
-	log.Fatal(http.ListenAndServe(":8080", r))
+	log.Println("Serveur lancé sur http://localhost:8080")
+	log.Fatal(http.ListenAndServe(":8080", mux))
 }

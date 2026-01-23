@@ -1,34 +1,37 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
   <head>
     <meta charset="UTF-8" />
-    <title>Favoris - Meme Universe</title>
-    <link rel="stylesheet" href="/assets/css/favoris.css" />
+    <title>Favoris</title>
+    <link rel="stylesheet" href="/assets/css/home.css" />
   </head>
   <body>
     <header>
       <h1>Favoris</h1>
       <nav>
         <a href="/">Accueil</a>
+        <a href="/search">Recherche</a>
         <a href="/favorites">Favoris</a>
         <a href="/about">À propos</a>
       </nav>
     </header>
-    <main>
-      {{if .}} {{range .}}
-      <div class="meme-card">
-        <img src="{{.Blank}}" alt="{{.Name}}" />
-        <div class="meme-title">{{.Name}}</div>
-        <form method="POST" action="/favorite/remove">
+
+    <main class="grid">
+      {{range .}}
+      <div class="card">
+        <!-- Limite la taille de l'image -->
+        <img
+          src="{{.Blank}}"
+          alt="{{.Name}}"
+          style="max-width: 300px; max-height: 300px; width: auto; height: auto"
+        />
+        <p>{{.Name}}</p>
+
+        <form method="POST" action="/favorites/remove">
           <input type="hidden" name="id" value="{{.ID}}" />
-          <button type="submit">Supprimer des favoris</button>
+          <button>Supprimer</button>
         </form>
       </div>
-      {{end}} {{else}}
-      <p>
-        Aucun favori pour le moment. Retournez à l'<a href="/">Accueil</a> pour
-        en ajouter !
-      </p>
       {{end}}
     </main>
   </body>

@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Meme Universe - Recherche</title>
+    <link rel="stylesheet" href="/assets/css/recherche.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header>
+      <div class="header-container">
+        <h1>Meme Universe</h1>
+        <nav>
+          <a href="/">Accueil</a>
+          <a href="/search">Recherche</a>
+          <a href="/favorites">Favoris</a>
+          <a href="/about">À propos</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="search-section">
+        <form method="GET" action="/search">
+          <input type="text" name="q" placeholder="Rechercher un meme..." />
+          <button>🔍 Rechercher</button>
+        </form>
+      </section>
+
+      <section class="grid">
+        {{range .}}
+        <div class="card">
+          <!-- Limite la taille de l'image et garde le ratio -->
+          <img src="{{.Blank}}" alt="{{.Name}}" />
+          <p>{{.Name}}</p>
+        </div>
+        {{end}}
+      </section>
+    </main>
+
+    <footer>
+      <p>© 2026 Meme Universe • Créé par <strong>SpikeIsUp</strong></p>
+    </footer>
+  </body>
+</html>

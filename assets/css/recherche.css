@@ -1,0 +1,164 @@
+/* --- Reset de base --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  background: #f0f2f5;
+  color: #333;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* --- Header --- */
+header {
+  background: linear-gradient(90deg, #4a90e2, #50e3c2);
+  color: white;
+  padding: 25px 20px;
+  text-align: center;
+}
+
+header h1 {
+  font-size: 2.2rem;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+header nav {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  margin-top: 10px;
+}
+
+header nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+header nav a:hover {
+  color: #ffd700;
+}
+
+/* --- Formulaire recherche --- */
+.search-section {
+  display: flex;
+  justify-content: center;
+  margin: 30px 0;
+}
+
+.search-section form {
+  display: flex;
+  width: 100%;
+  max-width: 500px;
+}
+
+.search-section input[type="text"] {
+  flex: 1;
+  padding: 12px 15px;
+  font-size: 1rem;
+  border: 2px solid #4a90e2;
+  border-radius: 8px 0 0 8px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.search-section input[type="text"]:focus {
+  border-color: #ffd700;
+}
+
+.search-section button {
+  padding: 12px 20px;
+  font-size: 1rem;
+  border: none;
+  background-color: #ffd700;
+  color: #333;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 0 8px 8px 0;
+  transition: background-color 0.2s;
+}
+
+.search-section button:hover {
+  background-color: #e6c200;
+}
+
+/* --- Grille des memes --- */
+/* 4 memes par ligne */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 25px;
+  padding: 0 20px 50px 20px;
+  justify-items: center;
+}
+
+/* --- Cards des memes --- */
+.card {
+  background-color: white;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+  text-align: center;
+  transition:
+    transform 0.3s,
+    box-shadow 0.3s;
+  width: 100%;
+  max-width: 250px;
+}
+
+.card:hover {
+  transform: translateY(-7px);
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.18);
+}
+
+.card img {
+  max-width: 200px; /* limite largeur */
+  max-height: 200px; /* limite hauteur */
+  width: auto;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+.card p {
+  padding: 12px;
+  font-weight: 500;
+  color: #555;
+  font-size: 1rem;
+}
+
+/* --- Footer --- */
+footer {
+  text-align: center;
+  padding: 20px;
+  background-color: #4a90e2;
+  color: white;
+  font-size: 0.9rem;
+  margin-top: auto;
+}
+
+/* --- Responsive --- */
+@media (max-width: 1200px) {
+  .grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}

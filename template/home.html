@@ -1,25 +1,31 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="fr">
   <head>
     <meta charset="UTF-8" />
-    <title>Meme Universe</title>
-    <link rel="stylesheet" href="../assets/css/home.css" />
+    <title>Meme</title>
+    <link rel="stylesheet" href="/assets/css/home.css" />
   </head>
   <body>
     <header>
-      <h1>Meme Universe</h1>
+      <h1>Meme</h1>
       <nav>
         <a href="/">Accueil</a>
+        <a href="/search">Recherche</a>
         <a href="/favorites">Favoris</a>
         <a href="/about">À propos</a>
       </nav>
     </header>
 
-    <main>
+    <main class="grid">
       {{range .}}
-      <div class="meme-card">
-        <img src="{{.Blank}}" alt="{{.Name}}" />
-        <div class="meme-title">{{.Name}}</div>
+      <div class="card">
+        <!-- Limite la taille de l'image -->
+        <img
+          src="{{.Blank}}"
+          alt="{{.Name}}"
+          style="max-width: 300px; max-height: 300px; width: auto; height: auto"
+        />
+        <p>{{.Name}}</p>
 
         <form method="POST" action="/favorite/add">
           <input type="hidden" name="id" value="{{.ID}}" />

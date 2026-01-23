@@ -8,14 +8,28 @@ import (
 
 func SetupRouter() *http.ServeMux {
 	mux := http.NewServeMux()
-	mux.Handle("/assets/", http.StripPrefix("/assets/", http.FileServer(http.Dir("assets"))))
 
+	// Accueil
 	mux.HandleFunc("/", controller.Home)
+
+	// Recherche
 	mux.HandleFunc("/search", controller.Search)
+
+	// Favoris
 	mux.HandleFunc("/favorites", controller.Favorites)
+
+	// Ajouter un favori
 	mux.HandleFunc("/favorite/add", controller.AddFavorite)
-	mux.HandleFunc("/favorite/remove", controller.RemoveFavorite)
+
+	// Supprimer un favori
+	mux.HandleFunc("/favorites/remove", controller.RemoveFavorite)
+
+	// À propos
 	mux.HandleFunc("/about", controller.About)
+
+	// Static files (CSS, JS, images)
+	fileServer := http.FileServer(http.Dir("./assets"))
+	mux.Handle("/assets/", http.StripPrefix("/assets/", fileServer))
 
 	return mux
 }
